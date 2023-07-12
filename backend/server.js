@@ -40,7 +40,9 @@ console.log(`A user is connected ${socket.id}`);
         console.log("user disconnected",socket.id);
     })
 });
+
 const port = 5000;
+
 server.listen(port,()=>{
     console.log(`server is connected on ${port}`);
 })
