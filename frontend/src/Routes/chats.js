@@ -7,9 +7,9 @@ import { useLocation } from 'react-router-dom';
     const [currmessage , setcurrmessage] = useState("");
     const socket = useContext(SocketContext);
     const location = useLocation();
-    const rooms = location.state.room;
+    const rooms = location.state.rooms;
     const username = location.state.username;
-    
+
    const sendmessage = async ()=>{
       if(currmessage !== ""){
          const messagedata = {
@@ -24,9 +24,11 @@ import { useLocation } from 'react-router-dom';
 
    useEffect(()=>{
       socket.on("reciever",(data)=>{
-         console.log("hello");
          console.log(data);
       })
+      return ()=>{
+         socket.off("reciever");
+      }
    },[socket]);
 
    return(

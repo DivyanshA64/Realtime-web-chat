@@ -15,7 +15,7 @@ const io = new Server(server,{
 })
 
 io.on("connection", (socket) => {
-console.log(`A user is connected ${socket.id}`);
+ console.log(`A user is connected ${socket.id}`);
     socket.on("joinroom",(data) =>{
         const index = arrayid.findIndex((element) =>{ return element == data});
         var tempmessage = "";
@@ -33,7 +33,7 @@ console.log(`A user is connected ${socket.id}`);
 
     socket.on("sendmessage",(data)=>{
         console.log(data);
-        socket.to(data.room).emit("reciever",data);
+        io.sockets.to(data.room).emit("reciever",data);
     })
 
     socket.on("disconnect",()=>{
