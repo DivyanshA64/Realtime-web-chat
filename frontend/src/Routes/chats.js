@@ -38,6 +38,8 @@ import "./chats.css";
       }
    },[socket]);
    return(
+      <div className='chat-page'>
+
       <div className='chat-window'>
       <div className='chat-header'><p>Live chats</p></div>
       <div className='chat-body'>
@@ -68,6 +70,7 @@ import "./chats.css";
       onKeyPress={(event)=>{ if(event.key === "Enter"){ sendmessage();}}}
       />
       <button onClick={sendmessage}>SEND</button>
+      </div>
       </div>
       </div>
    )

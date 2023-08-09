@@ -3,6 +3,7 @@ import { useContext,useState } from 'react';
 import {Navigate, useNavigate} from "react-router-dom";
 import {Route , Routes, BrowserRouter} from 'react-router-dom';
 import { SocketContext } from './socketcontext';
+import './home.css'
 
 function Home() {
     const socket = useContext(SocketContext);
@@ -28,8 +29,10 @@ function Home() {
   return (
     <div className="App-header">
         <div>
-        <h1>hello world</h1>
-        <h3>JOIN A CHAT</h3>
+        <div className='header'>
+        <h1>Create your private chat room</h1>
+        </div>
+        <div className='joinChatContainer'>
          <label htmlFor={'my-input'}> Enter roomid: </label>
          <input 
          type='text' 
@@ -45,7 +48,8 @@ function Home() {
             setUsername(event.target.value);
          }}
          />
-        <button onClick ={joinroom}><h3>CreateRoom/Joinroom</h3></button>
+        <button onClick ={joinroom}>CreateRoom/Joinroom</button>
+        </div>
         </div>
 
       </div>
