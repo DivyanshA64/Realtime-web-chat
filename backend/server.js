@@ -41,6 +41,10 @@ io.on("connection", (socket) => {
     })
 });
 
+app.get('/', (req, res) => {
+    res.send("Server Is Working");
+})
+
 const port = 5000;
 
 server.listen(port,()=>{

@@ -1,0 +1,29 @@
+version: '3'
+services:
+  frontend:
+    image: frontimg  # Replace with your frontend image name
+    # build: ./frontend            # Use this if you want to build it from the Dockerfile
+    ports:
+      - "3000:3000"              # Expose port 3000 for the frontend
+    depends_on:
+      - backend                  # Ensure backend starts before frontend
+    environment:
+      - API_URL=http://backend:5000  # Set environment variable for backend API
+  backend:
+    image: backimg   # Replace with your backend image name
+    build: ./backend            # Use this if you want to build it from the Dockerfile
+    ports:
+      - "5000:5000"             # Expose port 5000 for the backend
+    # environment:
+    #   - DATABASE_URL=mysql://db:3306/mydatabase  # Example database connection
+  #   depends_on:
+  #     - db
+  # db:
+  #   image: mysql:5.7 
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: rootpassword
+  #     MYSQL_DATABASE: mydatabase
+#     volumes:
+#       - db_data:/var/lib/mysql
+# volumes:
+#   db_data:
